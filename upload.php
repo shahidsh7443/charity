@@ -1,6 +1,6 @@
 <?php
 include_once 'dbconfig.php';
-if(isset($_POST['btn-upload']))
+if(isset($_POST))
 {
 $addr=$_POST['address'];
 $lat=$_POST['latitude'];
@@ -40,21 +40,13 @@ echo "111----".$lng."<br>";*/
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }
 	exit();*/
-			?>
-		<script>
-		alert('successfully uploaded');
-        window.location.href='index.php?success';
-        </script>
-		<?php
+header('Content-type: application/json');
+echo json_encode("success");
 	}
 	else
 	{
-		?>
-		<script>
-		alert('error while uploading file');
-        window.location.href='index.php?fail';
-        </script>
-		<?php
+		header('Content-type: application/json');
+		echo json_encode("error");
 	}
 }
 ?>

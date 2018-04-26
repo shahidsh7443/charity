@@ -35,6 +35,9 @@ include_once 'dbconfig.php';
   <!--===============================================================================================-->
   	<link rel="stylesheet" type="text/css" href="css/util.css">
   	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
   <!--===============================================================================================-->
 
 </head>
@@ -179,7 +182,7 @@ function showError(error) {
 	$("#charity").submit(function(e){
 	e.preventDefault();
 	var check = _validate();
-	var name = $("#nm").val();
+  var name = $("#nm").val();
 	var email = $("#em").val();
 	var contact = $("#cnt").val();
 	var issue = $("#iss").val();
@@ -211,6 +214,48 @@ return;
 	                error: function( aa ){
 	                 $(".container-contact100-form-btn").closest("div").append("<span class='error' style='color:red;font-weight:600;display:inline-block;font-size:17px;position:  absolute;margin-top: -30px;margin-left: -5px;'>Unable to send message</span>");
 
+                  }
+	            });
+
+
+	});
+  $("#uploadfrm").submit(function(e){
+	e.preventDefault();
+  var file = $(".upl").val();
+  var add = $(".addr").val();
+  if(file == "" && add == "" )
+  {
+    alert("Please Choose a file to upload and enter Address");
+    return;
+  }
+  else if(file == "")
+  {
+    alert("Please Choose a file to upload");
+    return;
+  }
+  else if(add == "")
+  {
+    alert("Please enter your address");
+    return;
+  }
+	var form_data = new FormData(this);
+	//$(this).serialize(),
+	$.ajax({
+	                url: 'upload.php',
+	                type: 'post',
+	                dataType : 'json',
+	                           contentType: false,
+	                           cache: false,
+	                           processData:false,
+	                data: form_data,
+	                success: function( data ){
+	            alert('File Uploaded successfully');
+              $('.sfl span').text("");
+              $('#uploadfrm')[0].reset();
+                 },
+	                error: function( data ){
+	                alert('Failed Upload');
+                    $('#uploadfrm')[0].reset();
                   }
 	            });
 
@@ -417,24 +462,32 @@ return;
     <!--./ ABOUT SECTION END -->
     <div id="budget">
 <div class="container-fluid">
-  <span class="contact100-form-title">
-        					Upload Files
-        				</span>
+<h2 class="text-center" style="padding-bottom:25px;color:#333333">Upload Files</h2>
   <div class="row text-center">
     <div class="col-sm-12">
-      <form action="upload.php" method="post" enctype="multipart/form-data">
-      <input type="file" name="file" class="upl" accept="audio/*,video/*,image/*" style="display:  inline-block;">
-      <input type="text" name="address" class="addr" placeholder="Enter your Address">
+      <form id="uploadfrm" method="post" enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-sm-offset-2 col-sm-4 sfl">
+      <input type="file" name="file" id="file-7" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple style="width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" accept="image/*,video/*,audio/*,.pdf,.xls,.ppt"/>
+  		<label for="file-7"><span></span> <strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> Choose a file</strong></label>
+</div>
+<div class="col-sm-3">
+      <input type="text" name="address" class="addr" placeholder="Enter your Address" style="padding-left:10px;width: 325px;padding: 15px;height:  45px;border-radius:  5px;">
+</div>
+</div>
       <input type="hidden" name="latitude" class="ltd" value="12.9428269">
       <input type="hidden" name="longitude" class="lgt" value="77.6091807">
         <input type="hidden" name="ipadd" class="ipa" value="103.16.69.21">
         <input type="hidden" name="stamp" class="tms" value="April 3 Wednesday 2018 -- 10:50:59 PM">
-      <button type="submit" name="btn-upload" class="btn btn-success">Upload</button>
+      </div>
+    </div>
+    <div class="row text-center" style="margin-top: 15px;">
+      <div class="col-sm-12">
+      <button type="submit" name="btn-upload" class="btn btn-style-2" style="width:  125px;font-size:  16px;font-family:  Poppins-Regular, sans-serif;">Upload</button>
       </form>
-      <h5 class="text-center" style="color:white;margin-top:10px;">[Supported Files/Formats(PDF,XLS,Images,Audio,Video)]</h5>
+      <h5 class="text-center" style="color:white;margin-top:10px;">[Supported Files/Formats(PDF,XLS,Images,Audio,Video)]</h5></div>
     </div>
     </div>
-  </div>
   </div>
     <!--./ BUDGET SECTION END -->
     <div id="impact">
@@ -880,6 +933,7 @@ return;
    </script>
     <!--  Jquery Core Script -->
     <script src="assets/js/jquery-1.10.2.js"></script>
+    	<script src="js/custom-file-input.js"></script>
     <!--  Core Bootstrap Script -->
     <script src="assets/js/bootstrap.js"></script>
     <!--  Scrolling Script -->
