@@ -578,3 +578,16 @@ table td,th
 	border: solid #9fa8b0 1px;
 	border-collapse:collapse;
 }
+@media only screen and (max-width:480px)
+{
+  .addr
+  {
+    width: auto !important;
+  }
+
+  .navbar-brand-logo {
+    max-height: 70px;
+    padding-bottom: 10px;
+    margin-top: -20px;
+}
+}

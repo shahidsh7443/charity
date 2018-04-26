@@ -1,4 +1,5 @@
 <?php
+		header('Content-type: application/json');
 include_once 'dbconfig.php';
 if(isset($_POST))
 {
@@ -40,12 +41,11 @@ echo "111----".$lng."<br>";*/
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }
 	exit();*/
-header('Content-type: application/json');
+
 echo json_encode("success");
 	}
 	else
 	{
-		header('Content-type: application/json');
 		echo json_encode("error");
 	}
 }

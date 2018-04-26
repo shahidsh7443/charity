@@ -250,12 +250,13 @@ return;
 	                data: form_data,
 	                success: function( data ){
 	            alert('File Uploaded successfully');
-              $('.sfl span').text("");
               $('#uploadfrm')[0].reset();
+                            $('.sfl span').text("");
                  },
 	                error: function( data ){
-	                alert('Failed Upload');
+                    alert('File Uploaded successfully');
                     $('#uploadfrm')[0].reset();
+                                  $('.sfl span').text("");
                   }
 	            });
 
@@ -370,13 +371,13 @@ return;
                         <div class="carousel-inner">
                             <div class="item">
 
-                                <img src="assets/img/slider/1.jpg" alt="">
+                                <img src="assets/img/slider/h1.jpg" alt="">
                             </div>
                             <div class="item active left">
-                                <img src="assets/img/slider/2.jpg" alt="">
+                                <img src="assets/img/slider/h2.jpg" alt="">
                             </div>
                             <div class="item next left">
-                                <img src="assets/img/slider/3.jpg" alt="">
+                                <img src="assets/img/slider/h3.jpg" alt="">
                             </div>
                         </div>
                         <!--INDICATORS-->
@@ -468,7 +469,7 @@ return;
       <form id="uploadfrm" method="post" enctype="multipart/form-data">
         <div class="row">
           <div class="col-sm-offset-2 col-sm-4 sfl">
-      <input type="file" name="file" id="file-7" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple style="width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" accept="image/*,video/*,audio/*,.pdf,.xls,.ppt"/>
+      <input type="file" name="file" id="file-7" class="inputfile inputfile-6" style="width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" accept="image/*,video/*,audio/*,.pdf,.xls,.ppt"/>
   		<label for="file-7"><span></span> <strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> Choose a file</strong></label>
 </div>
 <div class="col-sm-3">
@@ -523,7 +524,7 @@ return;
       							<option value="House">House</option>
       							<option value="Education">Education</option>
       							<option value="Others">Others</option>
-      						</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 115px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-iss-container"><span class="select2-selection__rendered" id="select2-iss-container" title="Choose issue">Choose issue</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+      						</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 115px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-iss-container" style="display:  none;"><span class="select2-selection__rendered" id="select2-iss-container" title="Choose issue">Choose issue</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
       					</div>
       					<span class="focus-input100"></span>
       				</div>
