@@ -12,7 +12,6 @@ include_once 'dbconfig.php';
         <![endif]-->
     <title>Responsive NGO ( Non Profit Organization ) Template : GIVE HELP</title>
     <!--  Bootstrap Style -->
-
   	  <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -41,9 +40,27 @@ include_once 'dbconfig.php';
   <!--===============================================================================================-->
 
 </head>
-
-<body onload="getLocation()" style="">
-
+<body onload="getLocation()">
+<div class="hameid-loader-overlay">
+<img src="images/load1.gif"></img></div>
+<style>
+.hameid-loader-overlay {
+        width: 100%;
+        height: 100%;
+        background:rgba(255,255,255,0.8);
+        z-index: 99999;
+        position: fixed;
+        display: none;
+    }
+    .hameid-loader-overlay img
+    {
+    position: absolute;
+    z-index: 99999999;
+    left: 45%;
+    top: 40%;
+    width: 100px;
+  }
+</style>
 
 <!----------------UPLOAD Script STart-------------------------------------------->
 <script>
@@ -63,10 +80,6 @@ function showPosition(position) {
    // x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
 $('.ltd').val(x);
 $('.lgt').val(y);
-$.getJSON("https://jsonip.com?callback=?", function(data) {
-    var ip=data.ip;
-    $('.ipa').val(ip);
-  });
   var now = new Date();
   var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];  var day = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   // Create an array with the current month, day and time
@@ -115,7 +128,261 @@ function showError(error) {
 </script>
 
 <!--End-------------------------------->
+<style>
 
+  #toast, #toast1, #toast2, #toast3 {
+    visibility: hidden;
+    max-width: 50px;
+    height: 50px;
+    /*margin-left: -125px;*/
+    margin: auto;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    position: fixed;
+    z-index: 1;
+    left: 0;right:0;
+    bottom: 55%;
+    font-size: 17px;
+    white-space: nowrap;
+}
+#toast #img, #toast1 #img1, #toast2 #img2, #toast3 #img3 {
+	width: 100px;
+	height: 50px;
+
+    float: left;
+    padding-top: 13px;
+    padding-bottom: 16px;
+
+    box-sizing: border-box;
+
+
+    background-color: #111;
+    color: #fff;
+}
+#toast #desc, #toast1 #desc1, #toast2 #desc2, #toast3 #desc3 {
+
+
+    color: #fff;
+
+    padding: 16px;
+
+    overflow: hidden;
+	white-space: nowrap;
+}
+
+#toast.show ,#toast1.show, #toast2.show, #toast3.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+}
+#toast2.show{
+    visibility: visible;
+    -webkit-animation: fadein1 0.5s, expand1 0.5s 0.5s,stay1 3s 1s, shrink1 0.5s 2s, fadeout1 0.5s 2.5s;
+    animation: fadein1 0.5s, expand1 0.5s 0.5s,stay1 3s 1s, shrink1 0.5s 4s, fadeout1 0.5s 4.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 55%; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: : 55%; opacity: 1;}
+}
+
+@-webkit-keyframes expand {
+    from {min-width: 50px}
+    to {min-width: 350px}
+}
+
+@keyframes expand {
+    from {min-width: 50px}
+    to {min-width: 350px}
+}
+@-webkit-keyframes stay {
+    from {min-width: 350px}
+    to {min-width: 350px}
+}
+
+@keyframes stay {
+    from {min-width: 350px}
+    to {min-width: 350px}
+}
+@-webkit-keyframes shrink {
+    from {min-width: 350px;}
+    to {min-width: 50px;}
+}
+
+@keyframes shrink {
+    from {min-width: 350px;}
+    to {min-width: 50px;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 60px; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 55%; opacity: 1;}
+    to {bottom: 55%; opacity: 0;}
+}
+
+/****************************toast2*************************/
+
+@-webkit-keyframes fadein1 {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 55%; opacity: 1;}
+}
+
+@keyframes fadein1 {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: : 55%; opacity: 1;}
+}
+
+@-webkit-keyframes expand1 {
+    from {min-width: 50px}
+    to {min-width: 500px}
+}
+
+@keyframes expand1 {
+    from {min-width: 50px}
+    to {min-width: 500px}
+}
+@-webkit-keyframes stay1 {
+    from {min-width: 500px}
+    to {min-width: 500px}
+}
+
+@keyframes stay1 {
+    from {min-width: 500px}
+    to {min-width: 500px}
+}
+@-webkit-keyframes shrink1 {
+    from {min-width: 500px;}
+    to {min-width: 50px;}
+}
+
+@keyframes shrink1 {
+    from {min-width: 500px;}
+    to {min-width: 50px;}
+}
+
+@-webkit-keyframes fadeout1 {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 60px; opacity: 0;}
+}
+
+@keyframes fadeout1 {
+    from {bottom: 55%; opacity: 1;}
+    to {bottom: 55%; opacity: 0;}
+}
+
+
+/*******************end*************************************/
+
+
+#loading{
+display:none;
+position: absolute;
+left: 40%;
+margin-top: -5px;
+z-index: 555;
+
+}
+@media only screen and (max-width:480px)
+{
+  #loading
+  {
+    position: absolute;
+    z-index: 77;
+    right: 15%;
+    margin-top: 50px;
+  }
+  #toast, #toast1, #toast2, #toast3
+  {
+      visibility: hidden;
+    top: 80%;
+    font-size: 10px;
+  }
+  #toast #img, #toast1 #img1, #toast2 #img2, #toast3 #img3 {
+      padding-top: 13px;
+      padding-bottom: 16px;
+  }
+  #toast.show ,#toast1.show, #toast2.show, #toast3.show {
+      visibility: visible;
+      -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+      animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+  }
+  #toast #desc, #toast1 #desc1, #toast2 #desc2, #toast3 #desc3 {
+    padding-top: 13px;
+    padding-bottom: 16px;
+  }
+  @-webkit-keyframes fadein {
+      from {top: 0; opacity: 0;}
+      to {top: 80%; opacity: 1;}
+  }
+
+  @keyframes fadein {
+      from {top: 0; opacity: 0;}
+      to {top : 80%; opacity: 1;}
+  }
+
+  @-webkit-keyframes expand {
+      from {min-width: 50px}
+      to {min-width: 350px}
+  }
+
+  @keyframes expand {
+      from {min-width: 50px}
+      to {min-width: 350px}
+  }
+  @-webkit-keyframes stay {
+      from {min-width: 350px}
+      to {min-width: 350px}
+  }
+
+  @keyframes stay {
+      from {min-width: 350px}
+      to {min-width: 350px}
+  }
+  @-webkit-keyframes shrink {
+      from {min-width: 350px;}
+      to {min-width: 50px;}
+  }
+
+  @keyframes shrink {
+      from {min-width: 350px;}
+      to {min-width: 50px;}
+  }
+
+  @-webkit-keyframes fadeout {
+      from {bottom: 30px; opacity: 1;}
+      to {bottom: 60px; opacity: 0;}
+  }
+
+  @keyframes fadeout {
+      from {top: 80%; opacity: 1;}
+      to {top: 95%; opacity: 0;}
+  }
+  .upbtn
+  {
+    margin-top: 25px;
+  }
+ .hameid-loader-overlay img
+    {
+    position: absolute;
+    z-index: 99999999;
+    left: 35%;
+    top: 40%;
+    width: 100px;
+  }
+
+}
+</style>
 
 
 
@@ -221,23 +488,31 @@ return;
 	});
   $("#uploadfrm").submit(function(e){
 	e.preventDefault();
-  var file = $(".upl").val();
+  var file = $(".upl").text();
   var add = $(".addr").val();
   if(file == "" && add == "" )
   {
-    alert("Please Choose a file to upload and enter Address");
+    var x = document.getElementById("toast2");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
     return;
   }
   else if(file == "")
   {
-    alert("Please Choose a file to upload");
+    var y = document.getElementById("toast1");
+  y.className = "show";
+  setTimeout(function(){ y.className = y.className.replace("show", ""); }, 5000);
     return;
   }
   else if(add == "")
   {
-    alert("Please enter your address");
+    var z = document.getElementById("toast3");
+  z.className = "show";
+  setTimeout(function(){ z.className = z.className.replace("show", ""); }, 5000);
     return;
   }
+     $(".hameid-loader-overlay").show();
+//  $("#loading").show();
 	var form_data = new FormData(this);
 	//$(this).serialize(),
 	$.ajax({
@@ -249,12 +524,19 @@ return;
 	                           processData:false,
 	                data: form_data,
 	                success: function( data ){
-	            alert('File Uploaded successfully');
-              $('#uploadfrm')[0].reset();
-                            $('.sfl span').text("");
+	              $(".hameid-loader-overlay").fadeOut(500);
+                var x = document.getElementById("toast");
+           x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+                $('#uploadfrm')[0].reset();
+                              $('.sfl span').text("");
                  },
 	                error: function( data ){
-                    alert('File Uploaded successfully');
+                  //$("#loading").hide();
+                  $(".hameid-loader-overlay").hide();
+                    var x = document.getElementById("toast");
+               x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
                     $('#uploadfrm')[0].reset();
                                   $('.sfl span').text("");
                   }
@@ -462,6 +744,11 @@ return;
     </div>
     <!--./ ABOUT SECTION END -->
     <div id="budget">
+      <div id="toast"><div id="img">Thank you</div><div id="desc">File Uploaded successfully</div></div>
+      <div id="toast1"><div id="img1">Info:</div><div id="desc1">Please choose a file to upload</div></div>
+      <div id="toast2"><div id="img2">Info:</div><div id="desc2">Please Choose a file to upload and enter Address</div></div>
+      <div id="toast3"><div id="img3">Info:</div><div id="desc3">Please enter your address</div></div>
+  <!--<img id="loading" src="images/loadd.gif" />-->
 <div class="container-fluid">
 <h2 class="text-center" style="padding-bottom:25px;color:#333333">Upload Files</h2>
   <div class="row text-center">
@@ -470,7 +757,7 @@ return;
         <div class="row">
           <div class="col-sm-offset-2 col-sm-4 sfl">
       <input type="file" name="file" id="file-7" class="inputfile inputfile-6" style="width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" accept="image/*,video/*,audio/*,.pdf,.xls,.ppt"/>
-  		<label for="file-7"><span></span> <strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> Choose a file</strong></label>
+  		<label for="file-7"><span class="upl"></span> <strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> Choose a file</strong></label>
 </div>
 <div class="col-sm-3">
       <input type="text" name="address" class="addr" placeholder="Enter your Address" style="padding-left:10px;width: 325px;padding: 15px;height:  45px;border-radius:  5px;">
@@ -484,7 +771,7 @@ return;
     </div>
     <div class="row text-center" style="margin-top: 15px;">
       <div class="col-sm-12">
-      <button type="submit" name="btn-upload" class="btn btn-style-2" style="width:  125px;font-size:  16px;font-family:  Poppins-Regular, sans-serif;">Upload</button>
+      <button type="submit" name="btn-upload" class="btn btn-style-2 upbtn" style="width:  125px;font-size:  16px;font-family:  Poppins-Regular, sans-serif;color:white;">Upload</button>
       </form>
       <h5 class="text-center" style="color:white;margin-top:10px;">[Supported Files/Formats(PDF,XLS,Images,Audio,Video)]</h5></div>
     </div>

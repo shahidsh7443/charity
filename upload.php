@@ -6,7 +6,8 @@ if(isset($_POST))
 $addr=$_POST['address'];
 $lat=$_POST['latitude'];
 $lng=$_POST['longitude'];
-$ipaddr=$_POST['ipadd'];
+$ipaddr=$_SERVER['REMOTE_ADDR'];
+
 $tmst=$_POST['stamp'];
 	$file = rand(1000,100000)."-".$_FILES['file']['name'];
   $file_loc = $_FILES['file']['tmp_name'];
