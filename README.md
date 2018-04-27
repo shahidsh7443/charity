@@ -2,7 +2,7 @@
 In this project we have implemented the concept of file upload and mail sending.
 
 # Database Connectivity
-Create a database named "upload" and create a table named "tbl_uploads" with following fields.
+Create a database named "upload" and create a table named "tbl_uploads" with following fields.(If you want a new Databse name and Table name then update the info in dbconfig.php file)
 
 CREATE TABLE `tbl_uploads` (`id` int(11) NOT NULL,
   `file` varchar(100) NOT NULL,
