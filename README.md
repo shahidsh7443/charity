@@ -1,7 +1,7 @@
 # Help Website
 In this project we have implemented the concept of file upload and mail sending.
 
-##Database Connectivity
+# Database Connectivity
 Create a database named "upload" and create a table named "tbl_uploads" with following fields.
 
 CREATE TABLE `tbl_uploads` (`id` int(11) NOT NULL,
